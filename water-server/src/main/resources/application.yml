@@ -1,0 +1,46 @@
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.32.132:3306/water?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 1234
+    monitorName: root
+    initial-size: 8
+    max-active: 25
+    min-idle: 8
+    max-wait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+  redis:
+    database: 1
+    host: 192.168.32.132
+    port: 6379
+    password: 123456
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+
+
+  main:
+    banner-mode: off
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: "classpath*:/mapper/**/*.xml"
+
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
+
+server:
+  port: 8080
