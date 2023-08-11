@@ -2,8 +2,6 @@ package com.water.service;
 
 import com.water.dto.ControlDTO;
 import com.water.entity.Machine;
-import com.water.exception.ChannelNotFoundException;
-import com.water.exception.NotResponseException;
 
 import java.util.List;
 

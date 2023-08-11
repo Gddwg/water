@@ -5,7 +5,6 @@ import com.water.constans.LinkConstans;
 import com.water.constans.UrlConstans;
 import com.water.redis.MachineRedis;
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 
 import java.util.Map;

@@ -1,9 +1,5 @@
 package com.water.constans;
 
-import cn.hutool.json.JSONObject;
-
-import java.util.HashMap;
-
 public class MapConstans {
     public static final String MAP_NAME = "map_name";
     public static final String MAP_FLOOR = "floor";

@@ -3,8 +3,6 @@ package com.water.utils;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.jca.context.SpringContextResourceAdapter;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;

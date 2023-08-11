@@ -5,7 +5,6 @@ import com.water.entity.Machine;
 import com.water.mapper.MachineMapper;
 import com.water.netty.ClientThread;
 import com.water.utils.RedisUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;

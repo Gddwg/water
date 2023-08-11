@@ -2,15 +2,15 @@ package com.water.controller;
 
 
 import com.water.constans.BaseConstans;
-import com.water.dto.BaseDTO;
-
 import com.water.dto.MoveDTO;
 import com.water.dto.PointDTO;
 import com.water.entity.Marker;
-import com.water.rest.RestMarker;
 import com.water.result.Result;
 import com.water.service.MarkerService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;

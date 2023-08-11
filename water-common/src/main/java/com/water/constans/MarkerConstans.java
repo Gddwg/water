@@ -1,7 +1,5 @@
 package com.water.constans;
 
-import java.util.regex.Pattern;
-
 public class MarkerConstans {
     public static final String MARKER_NAME = "marker_name";
     public static final String MARKER_FLOOR = "floor";
