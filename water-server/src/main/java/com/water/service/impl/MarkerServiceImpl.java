@@ -1,7 +1,6 @@
 package com.water.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.water.entity.Map;
 import com.water.entity.Marker;
 import com.water.mapper.MarkerMapper;
 import com.water.redis.MarkerRedis;
@@ -21,7 +20,7 @@ public class MarkerServiceImpl implements MarkerService {
     MarkerMapper markerMapper;
 
     @Override
-    public List<Marker> getMarkers(String mapName, Integer floor) {
+    public List<Marker> getMarkers(String mapName, int floor) {
         Marker marker = new Marker();
         marker.setMapName(mapName);
         marker.setFloor(floor);
@@ -31,7 +30,7 @@ public class MarkerServiceImpl implements MarkerService {
     }
 
     @Override
-    public void addMarker(String address,String mapName) {
+    public void scanMarker(String address,String mapName) {
         List<Marker> markers = restMarker.getMarkers(address,mapName);
         markers.forEach(markerMapper::insert);
     }

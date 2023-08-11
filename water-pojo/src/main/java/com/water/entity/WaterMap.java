@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @TableName("map")
-public class Map {
+public class WaterMap {
     @TableId(type = IdType.AUTO)
     private Long id;
     private String mapName;

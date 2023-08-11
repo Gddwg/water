@@ -1,19 +1,16 @@
 package com.water.netty;
 
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 
-import java.net.SocketAddress;
 import java.nio.charset.StandardCharsets;
 
 @Slf4j
-public class MachineChannel extends SimpleChannelInboundHandler {
+public class MachineHandler extends SimpleChannelInboundHandler {
 
-    public static final String ROBOT_STATUS_PUSH = "/api/request_data";
+    //public static final String ROBOT_STATUS_PUSH = "/api/request_data";
 
 
     /*public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -42,8 +39,12 @@ public class MachineChannel extends SimpleChannelInboundHandler {
         /*String formatStr = JSONObject.toJSONString(jsonObject, SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue,
                 SerializerFeature.WriteDateUseDateFormat);*/
         //log.info(formatStr);
+        try {
+            buf.release();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        //buf.release();
     }
 
     //• 发生异常时被调用

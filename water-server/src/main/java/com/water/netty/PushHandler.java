@@ -16,7 +16,7 @@ public class PushHandler {
 
         String url = String.format(UrlConstans.LISTENING_START, "robot_status", LinkConstans.PUSH_HZ);
         byte[] req = url.getBytes();
-        ByteBuf firstMessage = Unpooled.buffer(req.length);
+        ByteBuf firstMessage = channel.alloc().buffer(req.length);
         firstMessage.writeBytes(req);
 
         channel.writeAndFlush(firstMessage);

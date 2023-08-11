@@ -20,6 +20,6 @@ public class ClientThread extends Thread{
         ClientConnect clientConnect = new ClientConnect();
         clientConnect.setAddress(address);
         clientConnect.setPort(LinkConstans.TCP_PORT);
-        clientConnect.connet();
+        clientConnect.Init();
     }
 }

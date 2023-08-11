@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class MachineChannelInitializer extends ChannelInitializer<NioSocketChannel> {
 
-    private ClientConnect nettyClient;
+    private ClientConnect clientConnect;
 
     LoggingHandler loggingHandler = new LoggingHandler(LogLevel.INFO);
 
@@ -22,8 +22,8 @@ public class MachineChannelInitializer extends ChannelInitializer<NioSocketChann
         machineCodec.setPort(nettyClient.getPort());*/
 
         //channel.pipeline().addLast(new MachineProtocolFrameDecoder());
-        //channel.pipeline().addLast(loggingHandler);
-        channel.pipeline().addLast(new MachineChannel());
+        channel.pipeline().addLast(loggingHandler);
+        channel.pipeline().addLast(new MachineHandler());
 
 
     }

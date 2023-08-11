@@ -1,9 +1,9 @@
 package com.water.service;
 
-import com.water.entity.Map;
+import com.water.entity.WaterMap;
 
 public interface MapService {
-    Map getMapPoint(Map map);
+    WaterMap getMapPoint(WaterMap waterMap);
     void addMapPoint(String address);
 
 }

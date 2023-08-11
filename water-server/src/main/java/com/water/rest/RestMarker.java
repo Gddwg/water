@@ -1,14 +1,11 @@
 package com.water.rest;
 
-import com.alibaba.fastjson.JSONObject;
 import com.water.constans.BaseConstans;
-import com.water.constans.ExceptionConstans;
 import com.water.constans.MarkerConstans;
 import com.water.constans.UrlConstans;
 import com.water.entity.Marker;
-import com.water.exception.NotResponseException;
+import com.water.utils.RestUtil;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;

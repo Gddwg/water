@@ -1,4 +1,4 @@
-package com.water.rest;
+package com.water.utils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.water.constans.BaseConstans;
@@ -7,7 +7,6 @@ import com.water.exception.BaseException;
 import com.water.exception.NotResponseException;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 public class RestUtil {

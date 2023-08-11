@@ -23,19 +23,19 @@ public class MarkerController {
     @PostMapping("get")
     public Result<List<Marker>> getMarker(@RequestBody PointDTO pointDTO){
         String mapName = pointDTO.getMapName();
-        Integer floor = pointDTO.getFloor();
+        int floor = pointDTO.getFloor();
         return Result.success(markerService.getMarkers(mapName,floor));
     }
-    @PostMapping("add")
-    public Result addMarker(@RequestBody PointDTO pointDTO){
+    @PostMapping("scan")
+    public Result scanMarker(@RequestBody PointDTO pointDTO){
         String address = pointDTO.getAddress();
         String mapName = pointDTO.getMapName();
-        markerService.addMarker(address,mapName);
+        markerService.scanMarker(address,mapName);
         return Result.success(BaseConstans.SECCESS);
     }
     @PostMapping("move")
     public Result move(@RequestBody MoveDTO moveDTO){
-        Integer count = moveDTO.getCount();
+        int count = moveDTO.getCount();
         String address = moveDTO.getAddress();
         List<String> markers = moveDTO.getMarkers();
         markerService.toMarker(address,count,markers);

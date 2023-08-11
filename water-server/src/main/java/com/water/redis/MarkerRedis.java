@@ -1,10 +1,8 @@
 package com.water.redis;
 
-import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.water.constans.RedisConstans;
-import com.water.entity.Map;
 import com.water.entity.Marker;
 import com.water.utils.RedisUtil;
 

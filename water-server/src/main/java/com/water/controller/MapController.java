@@ -1,10 +1,9 @@
 package com.water.controller;
 
 
-import cn.hutool.http.HttpResponse;
 import com.water.dto.BaseDTO;
 import com.water.dto.PointDTO;
-import com.water.entity.Map;
+import com.water.entity.WaterMap;
 import com.water.rest.RestMap;
 import com.water.result.Result;
 import com.water.service.MapService;
@@ -12,10 +11,7 @@ import com.water.vo.MapListVO;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
-import java.awt.image.RenderedImage;
 import java.io.IOException;
 import java.util.List;
 
@@ -41,11 +37,11 @@ public class MapController {
         return Result.success();
     }
     @PostMapping("get/point")
-    public Result<Map> getMapPoint(@RequestBody PointDTO pointDTO){
-        Map map = new Map();
-        map.setMapName(pointDTO.getMapName());
-        map.setFloor(pointDTO.getFloor());
-        return Result.success(mapService.getMapPoint(map));
+    public Result<WaterMap> getMapPoint(@RequestBody PointDTO pointDTO){
+        WaterMap waterMap = new WaterMap();
+        waterMap.setMapName(pointDTO.getMapName());
+        waterMap.setFloor(pointDTO.getFloor());
+        return Result.success(mapService.getMapPoint(waterMap));
     }
 
     @PostMapping("list")

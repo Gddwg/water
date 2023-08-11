@@ -1,14 +1,16 @@
 package com.water.netty;
 
-import java.nio.channels.Channel;
+
+import io.netty.channel.Channel;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ChannelSession {
 
-    private static Map<String, io.netty.channel.Channel> keyToChannel = new ConcurrentHashMap<String, io.netty.channel.Channel>();
+    private static Map<String, Channel> keyToChannel = new ConcurrentHashMap<String, io.netty.channel.Channel>();
 
-    private static Map<io.netty.channel.Channel, String> channelToKey = new ConcurrentHashMap<io.netty.channel.Channel, String>();
+    private static Map<Channel, String> channelToKey = new ConcurrentHashMap<io.netty.channel.Channel, String>();
 
     public static void bind(String key, io.netty.channel.Channel channel){
         unbind(key);

@@ -1,8 +1,7 @@
 package com.water.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.water.entity.Map;
-import org.apache.ibatis.annotations.Select;
+import com.water.entity.WaterMap;
 
-public interface MapMapper extends BaseMapper<Map> {
+public interface MapMapper extends BaseMapper<WaterMap> {
 }

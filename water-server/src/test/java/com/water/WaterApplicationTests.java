@@ -1,14 +1,10 @@
 package com.water;
 
-import com.water.entity.Machine;
-import com.water.entity.Map;
 import com.water.entity.Marker;
-import com.water.netty.ClientThread;
 import com.water.rest.RestMachine;
 import com.water.rest.RestMap;
 import com.water.rest.RestMarker;
 import com.water.service.MarkerService;
-import com.water.vo.MapListVO;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
