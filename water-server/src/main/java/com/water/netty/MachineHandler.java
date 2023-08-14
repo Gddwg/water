@@ -39,11 +39,7 @@ public class MachineHandler extends SimpleChannelInboundHandler {
         /*String formatStr = JSONObject.toJSONString(jsonObject, SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue,
                 SerializerFeature.WriteDateUseDateFormat);*/
         //log.info(formatStr);
-        try {
-            buf.release();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        buf.release();
 
     }
 

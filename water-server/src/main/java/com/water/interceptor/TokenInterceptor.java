@@ -4,8 +4,7 @@ import com.water.constans.BaseConstants;
 import com.water.constans.ExceptionConstants;
 import com.water.context.WaterContext;
 import com.water.entity.TokenBind;
-
-import com.water.exception.BaseException;
+import com.water.exception.LoginFailException;
 import com.water.redis.TokenRedis;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,11 +21,11 @@ public class TokenInterceptor implements HandlerInterceptor {
          */
         String token = request.getHeader(BaseConstants.TOKEN);
         if (token == null){
-            throw new LoginException(BaseConstants.NOT_LOGIN);
+            throw new LoginFailException(BaseConstants.NOT_LOGIN);
         }
         TokenBind tokenBind = refreshToken(token);
         if (tokenBind == null){
-            throw new LoginException(ExceptionConstants.TOKEN_ERROR);
+            throw new LoginFailException(ExceptionConstants.TOKEN_ERROR);
         }
         WaterContext.setTokenBind(tokenBind);
         return true;
