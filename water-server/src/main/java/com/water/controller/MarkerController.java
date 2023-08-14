@@ -1,7 +1,7 @@
 package com.water.controller;
 
 
-import com.water.constans.BaseConstans;
+import com.water.constans.BaseConstants;
 import com.water.dto.MoveDTO;
 import com.water.dto.PointDTO;
 import com.water.entity.Marker;
@@ -31,7 +31,7 @@ public class MarkerController {
         String address = pointDTO.getAddress();
         String mapName = pointDTO.getMapName();
         markerService.scanMarker(address,mapName);
-        return Result.success(BaseConstans.SECCESS);
+        return Result.success(BaseConstants.SECCESS);
     }
     @PostMapping("move")
     public Result move(@RequestBody MoveDTO moveDTO){
@@ -39,6 +39,6 @@ public class MarkerController {
         String address = moveDTO.getAddress();
         List<String> markers = moveDTO.getMarkers();
         markerService.toMarker(address,count,markers);
-        return Result.success(BaseConstans.SECCESS);
+        return Result.success(BaseConstants.SECCESS);
     }
 }

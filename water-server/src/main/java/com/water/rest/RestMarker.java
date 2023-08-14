@@ -1,8 +1,8 @@
 package com.water.rest;
 
-import com.water.constans.BaseConstans;
-import com.water.constans.MarkerConstans;
-import com.water.constans.UrlConstans;
+import com.water.constans.BaseConstants;
+import com.water.constans.MarkerConstants;
+import com.water.constans.UrlConstants;
 import com.water.entity.Marker;
 import com.water.utils.RestUtil;
 import org.springframework.stereotype.Component;
@@ -18,27 +18,27 @@ public class RestMarker {
     @Resource
     RestTemplate restTemplate;
     public List<Marker> getMarkers(String address, String mapName){
-        String url = String.format(UrlConstans.MACHINE_MARKER_POINT,address);
+        String url = String.format(UrlConstants.MACHINE_MARKER_POINT,address);
         Map<String, Object> result = RestUtil.get(url, restTemplate);
-        Map<String, Object> res = (Map<String, Object>)result.get(BaseConstans.RESULTS);
+        Map<String, Object> res = (Map<String, Object>)result.get(BaseConstants.RESULTS);
         List<Marker> markers = new ArrayList<>();
         res.forEach((s, o) -> {
             Map<String, Object> r = (Map<String, Object>) o;
             Marker marker = new Marker();
-            marker.setMarkerName((String) r.get(MarkerConstans.MARKER_NAME));
-            marker.setK((Integer) r.get(MarkerConstans.MARKER_KEY));
-            marker.setFloor((Integer) r.get(MarkerConstans.MARKER_FLOOR));
-            Map<String, Object> pose = (Map<String, Object>)r.get(MarkerConstans.MARKER_POSE);
-            Map<String, Object> position = (Map<String, Object>)pose.get(MarkerConstans.MARKER_POSITION);
-            Double x = Double.parseDouble(String.valueOf(position.get(MarkerConstans.MARKER_X)));
-            Double y = Double.parseDouble(String.valueOf(position.get(MarkerConstans.MARKER_Y)));
-            Double z = Double.parseDouble(String.valueOf(position.get(MarkerConstans.MARKER_Z)));
+            marker.setMarkerName((String) r.get(MarkerConstants.MARKER_NAME));
+            marker.setK((Integer) r.get(MarkerConstants.MARKER_KEY));
+            marker.setFloor((Integer) r.get(MarkerConstants.MARKER_FLOOR));
+            Map<String, Object> pose = (Map<String, Object>)r.get(MarkerConstants.MARKER_POSE);
+            Map<String, Object> position = (Map<String, Object>)pose.get(MarkerConstants.MARKER_POSITION);
+            Double x = Double.parseDouble(String.valueOf(position.get(MarkerConstants.MARKER_X)));
+            Double y = Double.parseDouble(String.valueOf(position.get(MarkerConstants.MARKER_Y)));
+            Double z = Double.parseDouble(String.valueOf(position.get(MarkerConstants.MARKER_Z)));
             marker.setX(x);
             marker.setY(y);
             marker.setZ(z);
-            Map<String, Object> orientation = (Map<String, Object>)pose.get(MarkerConstans.MARKER_ORIENTATION);
-            z = Double.parseDouble(String.valueOf(orientation.get(MarkerConstans.MARKER_Z)));
-            Double w = Double.parseDouble(String.valueOf(orientation.get(MarkerConstans.MARKER_W)));
+            Map<String, Object> orientation = (Map<String, Object>)pose.get(MarkerConstants.MARKER_ORIENTATION);
+            z = Double.parseDouble(String.valueOf(orientation.get(MarkerConstants.MARKER_Z)));
+            Double w = Double.parseDouble(String.valueOf(orientation.get(MarkerConstants.MARKER_W)));
             double theta = 2*Math.atan2(z,w);
             if (theta > Math.PI && theta <= (2*Math.PI)) {
                 theta -= 2*Math.PI;
@@ -60,14 +60,14 @@ public class RestMarker {
                 sb.append(',');
             }
         }
-        String url = UrlConstans.MACHINE_MARKER_MOVE;
+        String url = UrlConstants.MACHINE_MARKER_MOVE;
         if(markers.size() != 1){
-            url = url + UrlConstans.MARKER_MOVE_MARKERS;
+            url = url + UrlConstants.MARKER_MOVE_MARKERS;
         }else {
-            url = url + UrlConstans.MARKER_MOVE_MARKER;
+            url = url + UrlConstants.MARKER_MOVE_MARKER;
         }
         if (count != null) {
-            url = url + UrlConstans.MARKER_MOVE_COUNT;
+            url = url + UrlConstants.MARKER_MOVE_COUNT;
         }
         url = String.format(url,address,sb,count);
         RestUtil.get(url, restTemplate);

@@ -1,6 +1,6 @@
 package com.water.constans;
 
-public class LinkConstans {
+public class LinkConstants {
     public static final int TCP_PORT = 31001;
     public static final int HTTP_PORT = 9001;
     // hz

@@ -7,11 +7,15 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
-import static com.water.constans.RedisConstans.CACHE_NULL_TTL;
+import static com.water.constans.RedisConstants.CACHE_NULL_TTL;
 
 
 public class RedisUtil {
     private static StringRedisTemplate stringRedisTemplate;
+
+    public static StringRedisTemplate getStringRedisTemplate() {
+        return stringRedisTemplate;
+    }
 
     public RedisUtil(StringRedisTemplate stringRedisTemplate) {
         this.stringRedisTemplate = stringRedisTemplate;

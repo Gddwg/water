@@ -1,6 +1,6 @@
 package com.water.constans;
 
-public class MapConstans {
+public class MapConstants {
     public static final String MAP_NAME = "map_name";
     public static final String MAP_FLOOR = "floor";
     public static final String MAP_INFO = "info";

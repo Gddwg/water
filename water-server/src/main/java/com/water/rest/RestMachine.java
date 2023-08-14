@@ -1,8 +1,8 @@
 package com.water.rest;
 
-import com.water.constans.BaseConstans;
-import com.water.constans.MachineConstans;
-import com.water.constans.UrlConstans;
+import com.water.constans.BaseConstants;
+import com.water.constans.MachineConstants;
+import com.water.constans.UrlConstants;
 import com.water.entity.Machine;
 import com.water.utils.RestUtil;
 import org.springframework.stereotype.Component;
@@ -17,14 +17,14 @@ public class RestMachine {
     @Resource
     RestTemplate restTemplate;
     public void stopMachine(String address) {
-        String url = String.format(UrlConstans.MACHINE_STOP,address);
+        String url = String.format(UrlConstants.MACHINE_STOP,address);
         RestUtil.get(url,restTemplate);
     }
     public Machine getInfo(String address, String name){
-        String url = String.format(UrlConstans.MACHINE_INFO,address);
+        String url = String.format(UrlConstants.MACHINE_INFO,address);
         Map<String, Object> res = RestUtil.get(url, restTemplate);
-        Map<String, String> results = (Map<String, String>)res.get(BaseConstans.RESULTS);
-        String productId = results.get(MachineConstans.PRODUCT_ID);
+        Map<String, String> results = (Map<String, String>)res.get(BaseConstants.RESULTS);
+        String productId = results.get(MachineConstants.PRODUCT_ID);
         Machine machine = new Machine();
         machine.setProductId(productId);
         machine.setAddress(address);

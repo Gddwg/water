@@ -1,6 +1,6 @@
 package com.water.controller;
 
-import com.water.constans.BaseConstans;
+import com.water.constans.BaseConstants;
 import com.water.dto.LoginDTO;
 import com.water.result.Result;
 import com.water.service.UserService;
@@ -26,12 +26,12 @@ public class UserContorller {
         String name = loginDTO.getName();
         String username = loginDTO.getUsername();
         String password = loginDTO.getPassword();
-        LoginVO res = userService.register(name,username,password);
-        return Result.success(res);
+        userService.register(name,username,password);
+        return Result.success(BaseConstants.SECCESS);
     }
 
     @GetMapping("get")
     public Result getUser(){
-        return Result.success(BaseConstans.SECCESS);
+        return Result.success(BaseConstants.SECCESS);
     }
 }

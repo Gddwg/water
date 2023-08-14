@@ -2,7 +2,7 @@ package com.water.redis;
 
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.water.constans.RedisConstans;
+import com.water.constans.RedisConstants;
 import com.water.entity.WaterMap;
 import com.water.utils.RedisUtil;
 
@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
-import static com.water.constans.RedisConstans.CACHE_NULL_TTL;
+import static com.water.constans.RedisConstants.CACHE_NULL_TTL;
 
 public class MapRedis {
     public static WaterMap getByMap(WaterMap waterMap, Wrapper wrapper, Function<Wrapper, List> dbfallback) {
-        String key = RedisConstans.MAP_INFO_KEY + waterMap.getMapName() + "-" + waterMap.getFloor();
+        String key = RedisConstants.MAP_INFO_KEY + waterMap.getMapName() + "-" + waterMap.getFloor();
         String res = RedisUtil.get(key);
         if(res != null){
             return JSONUtil.toBean(res, WaterMap.class);
@@ -26,7 +26,7 @@ public class MapRedis {
             return null;
         }
         WaterMap m = r.get(0);
-        RedisUtil.set(key,m,RedisConstans.MAP_INFO_TTL,TimeUnit.MINUTES);
+        RedisUtil.set(key,m, RedisConstants.MAP_INFO_TTL,TimeUnit.MINUTES);
         return m;
     }
 }

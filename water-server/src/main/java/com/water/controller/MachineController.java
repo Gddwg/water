@@ -34,14 +34,14 @@ public class MachineController {
         String address = addMachineDTO.getAddress();
         String name = addMachineDTO.getName();
         if(address == null || name == null){
-            return Result.error(BaseConstans.ERROR);
+            return Result.error(BaseConstants.ERROR);
         }
         machineService.add(address,name);
 
         ClientThread clientThread = new ClientThread(address);
         clientThread.start();
 
-        return Result.success(BaseConstans.SECCESS);
+        return Result.success(BaseConstants.SECCESS);
     }
 
     /*public Result<String> start(String topic,String frequency) {
@@ -61,9 +61,9 @@ public class MachineController {
 
     @GetMapping("status")
     public Result<Object> getStatus(BaseDTO baseDTO){
-        Object push = PushHandler.getPush(baseDTO.getAddress(), MachineConstans.STATUS);
+        Object push = PushHandler.getPush(baseDTO.getAddress(), MachineConstants.STATUS);
         if (push == null){
-            throw new NotResponseException(ExceptionConstans.CHANNEL_NOT_FOUND);
+            throw new NotResponseException(ExceptionConstants.CHANNEL_NOT_FOUND);
         }
         return Result.success(push);
     }

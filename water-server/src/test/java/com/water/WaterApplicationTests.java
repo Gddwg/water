@@ -5,6 +5,8 @@ import com.water.rest.RestMachine;
 import com.water.rest.RestMap;
 import com.water.rest.RestMarker;
 import com.water.service.MarkerService;
+import com.water.service.UserService;
+import com.water.service.impl.UserServiceImpl;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -30,18 +32,19 @@ class WaterApplicationTests {
     @Resource
     RestMarker restMarker;
     @Resource
+    UserServiceImpl userService;
+    @Resource
     MarkerService markerService;
 
 
     @Test
     void contextLoads() {
-        connect();
+        //connect();
     }
 
     @Test
     void test(){
-        List<Marker> hg = markerService.getMarkers("hg", 5);
-        System.out.println(hg);
+        userService.getToken(1L,"xuan");
     }
 
 
@@ -50,7 +53,7 @@ class WaterApplicationTests {
 
 
     static void connect(){
-        NioEventLoopGroup eventExecutors = new NioEventLoopGroup();
+        /*NioEventLoopGroup eventExecutors = new NioEventLoopGroup();
         LoggingHandler loggingHandler = new LoggingHandler(LogLevel.INFO);
 
         try {
@@ -81,7 +84,7 @@ class WaterApplicationTests {
         } finally {
             //关闭线程组
             eventExecutors.shutdownGracefully();
-        }
+        }*/
     }
 
 }

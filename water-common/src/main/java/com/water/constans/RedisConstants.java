@@ -1,6 +1,6 @@
 package com.water.constans;
 
-public class RedisConstans {
+public class RedisConstants {
     public static final Long CACHE_NULL_TTL = 5L;
     public static final String MACHINE_ID_KEY = "machine:id:";
     public static final String MACHINE_PUSH_KEY = "machine:push:";
@@ -9,4 +9,6 @@ public class RedisConstans {
     public static final Long MAP_INFO_TTL = 30L;
     public static final String MARKER_INFO_KEY = "marker:info:";
     public static final Long MARKER_INFO_TTL = 30L;
+    public static final String USER_TOKEN_KEY = "user:token:";
+    public static final Long USER_TOKEN_TTL = 7L;
 }

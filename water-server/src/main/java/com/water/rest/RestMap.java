@@ -1,8 +1,8 @@
 package com.water.rest;
 
-import static com.water.constans.BaseConstans.RESULTS;
-import static com.water.constans.MapConstans.*;
-import com.water.constans.UrlConstans;
+import static com.water.constans.BaseConstants.RESULTS;
+import static com.water.constans.MapConstants.*;
+import com.water.constans.UrlConstants;
 import com.water.entity.WaterMap;
 import com.water.utils.RestUtil;
 import com.water.vo.MapListVO;
@@ -20,7 +20,7 @@ public class RestMap {
     @Resource
     RestTemplate restTemplate;
     public WaterMap getMapPoint(String address){
-        String url = String.format(UrlConstans.MACHINE_MAP_POINT,address);
+        String url = String.format(UrlConstants.MACHINE_MAP_POINT,address);
         Map<String, Object> res = RestUtil.get(url, restTemplate);
         Map<String, Object> results = (Map<String, Object>)res.get(RESULTS);
         String mapName = (String)results.get(MAP_NAME);
@@ -43,7 +43,7 @@ public class RestMap {
     }
 
     public List<MapListVO> getMapList(String address){
-        String url = String.format(UrlConstans.MACHINE_MAP_LIST,address);
+        String url = String.format(UrlConstants.MACHINE_MAP_LIST,address);
         Map<String, Object> res = RestUtil.get(url, restTemplate);
         Map<String, Object> mapList = (Map<String, Object>)res.get(RESULTS);
         List<MapListVO> map = new ArrayList<MapListVO>();
