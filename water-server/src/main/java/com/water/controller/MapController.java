@@ -22,6 +22,13 @@ public class MapController {
     RestMap restMap;
     @Resource
     MapService mapService;
+
+    /**
+     * 获取地图
+     * @param pointDTO
+     * @param res
+     * @throws IOException
+     */
     @PostMapping("get")
     public void getMap(@RequestBody PointDTO pointDTO, HttpServletResponse res) throws IOException {
         /*String address = getMapDTO.getAddress();
@@ -31,11 +38,23 @@ public class MapController {
         ImageIO.write((RenderedImage) map,"png",res.getOutputStream());*/
 
     }
+
+    /**
+     * 获取当前机器人的地图信息存入mysql
+     * @param baseDTO
+     * @return
+     */
     @PostMapping("add")
     public Result addMapPoint(@RequestBody BaseDTO baseDTO){
         mapService.addMapPoint(baseDTO.getAddress());
         return Result.success();
     }
+
+    /**
+     * 获取地图点位
+     * @param pointDTO
+     * @return
+     */
     @PostMapping("get/point")
     public Result<WaterMap> getMapPoint(@RequestBody PointDTO pointDTO){
         WaterMap waterMap = new WaterMap();
@@ -44,6 +63,11 @@ public class MapController {
         return Result.success(mapService.getMapPoint(waterMap));
     }
 
+    /**
+     * 获取所有地图
+     * @param baseDTO
+     * @return
+     */
     @PostMapping("list")
     public Result<List<MapListVO>> getList(@RequestBody BaseDTO baseDTO){
         return Result.success(restMap.getMapList(baseDTO.getAddress()));

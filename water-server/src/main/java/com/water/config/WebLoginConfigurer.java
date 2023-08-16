@@ -8,8 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebLoginConfigurer implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new TokenInterceptor()).addPathPatterns("/**")
+        /*registry.addInterceptor(new TokenInterceptor()).addPathPatterns("/**")
                 .excludePathPatterns("/login")
-                .excludePathPatterns("/register");
+                .excludePathPatterns("/register");*/
     }
 }

@@ -23,12 +23,21 @@ public class MachineController {
     @Resource
     MachineService machineService;
 
+    /**
+     * 获取所有机器人
+     * @return
+     */
     @GetMapping("get")
     public Result<List<Machine>> getMachines(){
         List<Machine> machines = machineService.getMachines();
         return Result.success(machines);
     }
 
+    /**
+     * 添加新的机器人
+     * @param addMachineDTO
+     * @return
+     */
     @PostMapping("add")
     public Result<String> addMachine(@RequestBody AddMachineDTO addMachineDTO){
         String address = addMachineDTO.getAddress();
@@ -59,6 +68,11 @@ public class MachineController {
         return Result.success("listening_success");
     }*/
 
+    /**
+     * 获取机器人实时状态
+     * @param baseDTO
+     * @return
+     */
     @GetMapping("status")
     public Result<Object> getStatus(BaseDTO baseDTO){
         Object push = PushHandler.getPush(baseDTO.getAddress(), MachineConstants.STATUS);
@@ -68,14 +82,22 @@ public class MachineController {
         return Result.success(push);
     }
 
+    /**
+     * 直接控制机器人
+     * @param controlDTO
+     * @throws ChannelNotFoundException
+     */
     @PostMapping("control")
     public void control(@RequestBody ControlDTO controlDTO) throws ChannelNotFoundException {
         machineService.control(controlDTO);
     }
 
+    /**
+     * 机器人停止移动
+     * @param baseDTO
+     */
     @GetMapping("stop")
     public void stop(BaseDTO baseDTO){
         machineService.stop(baseDTO.getAddress());
     }
-
 }

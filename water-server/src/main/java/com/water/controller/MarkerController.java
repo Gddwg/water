@@ -20,12 +20,24 @@ import java.util.List;
 public class MarkerController {
     @Resource
     MarkerService markerService;
+
+    /**
+     * 获取指定地图的所有点位
+     * @param pointDTO
+     * @return
+     */
     @PostMapping("get")
     public Result<List<Marker>> getMarker(@RequestBody PointDTO pointDTO){
         String mapName = pointDTO.getMapName();
         int floor = pointDTO.getFloor();
         return Result.success(markerService.getMarkers(mapName,floor));
     }
+
+    /**
+     * 扫描机器人中指定地图的所有点位存入mysql
+     * @param pointDTO
+     * @return
+     */
     @PostMapping("scan")
     public Result scanMarker(@RequestBody PointDTO pointDTO){
         String address = pointDTO.getAddress();
@@ -33,6 +45,12 @@ public class MarkerController {
         markerService.scanMarker(address,mapName);
         return Result.success(BaseConstants.SECCESS);
     }
+
+    /**
+     * 让机器人进行点位间移动
+     * @param moveDTO
+     * @return
+     */
     @PostMapping("move")
     public Result move(@RequestBody MoveDTO moveDTO){
         int count = moveDTO.getCount();

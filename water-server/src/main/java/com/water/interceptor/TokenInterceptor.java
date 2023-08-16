@@ -9,7 +9,6 @@ import com.water.redis.TokenRedis;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,8 +22,10 @@ public class TokenInterceptor implements HandlerInterceptor {
         if (token == null){
             throw new LoginFailException(BaseConstants.NOT_LOGIN);
         }
-        TokenBind tokenBind = refreshToken(token);
-        if (tokenBind == null){
+        TokenBind tokenBind = TokenRedis.getTokenBind(token);
+        if(tokenBind != null) {
+            TokenRedis.refreshToken(token);
+        }else {
             throw new LoginFailException(ExceptionConstants.TOKEN_ERROR);
         }
         WaterContext.setTokenBind(tokenBind);
@@ -39,14 +40,6 @@ public class TokenInterceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         WaterContext.remove();
-    }
-
-    private TokenBind refreshToken(String token){
-        TokenBind tokenBind = TokenRedis.getTokenBind(token);
-        if(tokenBind != null) {
-            TokenRedis.refreshToken(token);
-        }
-        return tokenBind;
     }
 
 }
