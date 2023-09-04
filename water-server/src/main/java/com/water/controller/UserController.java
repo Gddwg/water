@@ -11,27 +11,33 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("api/user")
-public class UserContorller {
+public class UserController {
     @Resource
     UserService userService;
     @PostMapping("login")
-    public Result login(@RequestBody LoginDTO loginDTO){
+    public Result<LoginVO> login(@RequestBody LoginDTO loginDTO){
         String username = loginDTO.getUsername();
         String password = loginDTO.getPassword();
+        if(username == null || password == null){
+            return Result.error(BaseConstants.ERROR_MESSAGE);
+        }
         LoginVO res = userService.login(username, password);
         return Result.success(res);
     }
     @PostMapping("register")
-    public Result register(@RequestBody LoginDTO loginDTO){
+    public Result<String> register(@RequestBody LoginDTO loginDTO){
         String name = loginDTO.getName();
         String username = loginDTO.getUsername();
         String password = loginDTO.getPassword();
+        if(name == null || username == null || password == null) {
+            return Result.error(BaseConstants.ERROR_MESSAGE);
+        }
         userService.register(name,username,password);
-        return Result.success(BaseConstants.SECCESS);
+        return Result.success(BaseConstants.SUCCESS);
     }
 
     @GetMapping("get")
-    public Result getUser(){
-        return Result.success(BaseConstants.SECCESS);
+    public Result<String> getUser(){
+        return Result.success(BaseConstants.SUCCESS);
     }
 }

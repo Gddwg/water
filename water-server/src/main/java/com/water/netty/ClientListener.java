@@ -1,5 +1,6 @@
 package com.water.netty;
 
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,11 @@ public class ClientListener implements ChannelFutureListener {
                 clientConnect.getEventExecutors().shutdownGracefully();
             }
         } else {
+            Channel channel = channelFuture.channel();
+
+            PushHandler.getListening(channelFuture.channel());
+
+            ChannelSession.bind(clientConnect.getAddress() + "-" + clientConnect.getPort(), channel);
             clientConnect.setFrequency(0);
             log.info("连接成功");
         }

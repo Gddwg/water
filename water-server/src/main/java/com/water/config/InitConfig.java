@@ -24,7 +24,7 @@ public class InitConfig implements ApplicationRunner {
     StringRedisTemplate stringRedisTemplate;
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         new RedisUtil(stringRedisTemplate);
 
         //初始化连接

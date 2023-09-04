@@ -39,11 +39,11 @@ public class MarkerController {
      * @return
      */
     @PostMapping("scan")
-    public Result scanMarker(@RequestBody PointDTO pointDTO){
+    public Result<String> scanMarker(@RequestBody PointDTO pointDTO){
         String address = pointDTO.getAddress();
         String mapName = pointDTO.getMapName();
         markerService.scanMarker(address,mapName);
-        return Result.success(BaseConstants.SECCESS);
+        return Result.success(BaseConstants.SUCCESS);
     }
 
     /**
@@ -52,11 +52,11 @@ public class MarkerController {
      * @return
      */
     @PostMapping("move")
-    public Result move(@RequestBody MoveDTO moveDTO){
+    public Result<String> move(@RequestBody MoveDTO moveDTO){
         int count = moveDTO.getCount();
         String address = moveDTO.getAddress();
         List<String> markers = moveDTO.getMarkers();
         markerService.toMarker(address,count,markers);
-        return Result.success(BaseConstants.SECCESS);
+        return Result.success(BaseConstants.SUCCESS);
     }
 }

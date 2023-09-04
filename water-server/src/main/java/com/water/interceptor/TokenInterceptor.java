@@ -15,16 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 public class TokenInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        /**
-         * 登录校验
-         */
+        //登录校验
         String token = request.getHeader(BaseConstants.TOKEN);
         if (token == null){
             throw new LoginFailException(BaseConstants.NOT_LOGIN);
         }
         TokenBind tokenBind = TokenRedis.getTokenBind(token);
         if(tokenBind != null) {
-            TokenRedis.refreshToken(token);
+            TokenRedis.refreshToken(tokenBind.getId(),token);
         }else {
             throw new LoginFailException(ExceptionConstants.TOKEN_ERROR);
         }

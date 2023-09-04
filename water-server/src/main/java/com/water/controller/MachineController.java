@@ -50,7 +50,7 @@ public class MachineController {
         ClientThread clientThread = new ClientThread(address);
         clientThread.start();
 
-        return Result.success(BaseConstants.SECCESS);
+        return Result.success(BaseConstants.SUCCESS);
     }
 
     /*public Result<String> start(String topic,String frequency) {

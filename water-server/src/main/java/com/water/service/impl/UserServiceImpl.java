@@ -68,7 +68,13 @@ public class UserServiceImpl implements UserService {
         tokenBind.setUsername(username);
         tokenBind.setToken(token);
 
+        String oldToken = TokenRedis.getToken(id);
+        //校验token是否存在,进行token刷新
+        if(oldToken != null){
+            TokenRedis.remove(id, oldToken);
+        }
+        TokenRedis.setToken(id,token);
         TokenRedis.setTokenBind(token,tokenBind);
-        return null;
+        return token;
     }
 }

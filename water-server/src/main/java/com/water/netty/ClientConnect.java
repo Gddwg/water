@@ -24,7 +24,7 @@ public class ClientConnect {
 
 
 
-    public void Init(){
+    public void init(){
         eventExecutors = new NioEventLoopGroup();
         machineChannelInitializer = new MachineChannelInitializer();
         machineChannelInitializer.setClientConnect(this);
@@ -47,13 +47,6 @@ public class ClientConnect {
             ChannelFuture channelFuture = bootstrap.connect(address, port);
             //添加监听进行重连
             channelFuture.addListener(new ClientListener(this));
-
-            Channel channel = channelFuture.sync().channel();
-
-            PushHandler.getListening(channelFuture.channel());
-
-            ChannelSession.bind(address + "-" + port, channel);
-
             //对通道关闭进行监听
             channelFuture.channel().closeFuture().sync();
         } catch (Exception e) {

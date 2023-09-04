@@ -8,10 +8,12 @@ import com.water.rest.RestMap;
 import com.water.result.Result;
 import com.water.service.MapService;
 import com.water.vo.MapListVO;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
@@ -29,15 +31,14 @@ public class MapController {
      * @param res
      * @throws IOException
      */
-    @PostMapping("get")
+    /*@PostMapping("get")
     public void getMap(@RequestBody PointDTO pointDTO, HttpServletResponse res) throws IOException {
-        /*String address = getMapDTO.getAddress();
+        String address = getMapDTO.getAddress();
         String mapName = getMapDTO.getMapName();
         Integer floor = getMapDTO.getFloor();
         Image map = restMap.getMap(address, mapName, floor);
-        ImageIO.write((RenderedImage) map,"png",res.getOutputStream());*/
-
-    }
+        ImageIO.write((RenderedImage) map,"png",res.getOutputStream());
+    }*/
 
     /**
      * 获取当前机器人的地图信息存入mysql
